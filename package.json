@@ -1,0 +1,25 @@
+{
+  "name": "api-pol-ts",
+  "version": "1.0.0",
+  "description": "Typescript/Express API",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afranca/api-pol-ts.git"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "express",
+    "bjss"
+  ],
+  "author": "Alexandre Franca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afranca/api-pol-ts/issues"
+  },
+  "homepage": "https://github.com/afranca/api-pol-ts#readme"
+}
