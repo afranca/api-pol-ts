@@ -37,13 +37,8 @@ export const getUsers: RequestHandler = (req, res, next) =>{
     // Grabbing id from parameters    
     const age =  req.query.age;
     const role = req.query.role;
-    //const occupation = req.params.occupation;
-    //const type = req.params.type //: UserType = defineUserType(role,occupation); 
-
-    console.log(age);
-    console.log(role);
-    //console.log(occupation);
-    //console.log(type);
+    const occupation = req.query.occupation;
+    const type: UserType = req.params.type as UserType;
 
     let tmpUsers: User[] = USERS;
     if (age){
@@ -55,12 +50,13 @@ export const getUsers: RequestHandler = (req, res, next) =>{
     }
     /*
     if (type){
-        //tmpUsers = USERS.filter( (user) => user.role === role);
-    }    
-    if (occupation){
-        tmpUsers = USERS.filter( (user) => user.occupation === occupation);
+        tmpUsers = tmpUsers.filter( (user) => user.type === type);
     } 
-    */           
+    */   
+    
+    if (occupation){
+        tmpUsers = tmpUsers.filter( (user) => user.occupation === occupation);
+    } 
     
     res.status(201).json({Users: tmpUsers});  
 };
