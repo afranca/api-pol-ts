@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { json } from 'body-parser';
-import todosRoutes from './routes/todos';
+import apiRoutes from './routes/api-routes';
 
 const app = express();
 

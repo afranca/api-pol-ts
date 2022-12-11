@@ -1,24 +1,25 @@
 import { RequestHandler } from "express";
+import { User } from "../models/users";
 
-const USERS: [] = [];
+const USERS: User[] = [];
 
-export const createTodo: RequestHandler = (req, res, next ) => {
+export const createUser: RequestHandler = (req, res, next ) => {
 
     //Sending response
     res.status(201).json({message:'Successfully created.'});
 };
 
-export const getTodos: RequestHandler = (req, res, next) =>{
-    res.status(201).json({todos: USERS});
+export const getUsers: RequestHandler = (req, res, next) =>{
+    res.status(201).json({Users: USERS});
 };
 
-export const updateTodo: RequestHandler<{id: string}> = (req, res, next) =>{
+export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
 
     //Sending response
     res.status(201).json({message:'Successfully updated.'});
 };
 
-export const deleteTodo: RequestHandler<{id: string}> = (req, res, next) =>{
+export const deleteUser: RequestHandler<{id: string}> = (req, res, next) =>{
 
     //Sending response
     res.status(201).json({message:'Successfully deleted.'});
