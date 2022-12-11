@@ -1,21 +1,38 @@
-interface Admin {
-    id: number;
-    type: 'admin';
+// UserType for Users
+export enum UserType {
+    admin = 'admin',
+    employee = 'employee',
+    poweruser = 'poweruser'
+}
+
+interface BaseUser {
+    id: string;
+    type: UserType;
     name: string;
     age: number;
-    role: string;
+}
+
+interface Admin extends BaseUser{
+    role?: string;
 }
 
 interface Employee {
-    id: number;
-    type: 'employee';
-    name: string;
-    age: number;
-    occupation: string;
+    occupation?: string;
 }
 
-//interface PowerUser extends Admin, Employee{}
-export type PowerUser = Admin & Employee;
+interface PowerUser extends Admin, Employee{}
+//export type PowerUser = Admin & Employee;
 
-export type User = Admin | Employee | PowerUser;
+//export type User = Admin | Employee | PowerUser;
+export class User implements Admin,Employee {
+    constructor(
+        public id: string, 
+        public type: UserType,
+        public name: string,
+        public age: number,
+        public role?: string,
+        public occupation?: string
+    ){   }
+
+}
 
