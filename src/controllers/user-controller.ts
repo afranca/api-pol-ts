@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import { RequestBody } from "../models/request-body";
 import { User } from "../models/users";
 import { UserType } from "../models/users";
+import { defineUserType } from "../utils/type-util";
 
 const USERS: User[] = [];
 
@@ -12,17 +13,7 @@ export const createUser: RequestHandler = (req, res, next ) => {
     const role = (req.body as RequestBody).role;
     const occupation = (req.body as RequestBody).occupation;
 
-    let type: UserType;
-    if (role && occupation ){
-        type = UserType.poweruser;  
-    } else if (role){
-        type = UserType.admin;  
-    } else if (occupation){
-        type = UserType.employee;  
-    } else {
-        throw new Error('Missing both, role and occupation fields');
-    }
-    
+    const type: UserType = defineUserType(role,occupation);
 
 
    const newUser =  new User(
