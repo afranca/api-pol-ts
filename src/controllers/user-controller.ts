@@ -4,8 +4,15 @@ import { User } from "../models/users";
 import { UserType } from "../models/users";
 import { defineUserType } from "../utils/type-util";
 
+/* ************************************ */
+/* * Repository                         */
+/* ************************************ */
 const USERS: User[] = [];
 
+
+/* ************************************ */
+/* * Create User                        */
+/* ************************************ */
 export const createUser: RequestHandler = (req, res, next ) => {
     
     const name = (req.body as RequestBody).name;
@@ -32,13 +39,32 @@ export const createUser: RequestHandler = (req, res, next ) => {
     res.status(201).json({message:'Successfully created.', entry: newUser});
 };
 
-//Needs to implement filering
-export const getUsers: RequestHandler = (req, res, next) =>{
-    // Grabbing id from parameters    
+/* ************************************ */
+/* * Get User by Id                     */
+/* ************************************ */
+export const getUser: RequestHandler<{id: string}> = (req, res, next) =>{
+    // Grabbing url from parameters    
+    const id =  req.params.id;
+
+    // Finding index of item to update
+    const userIndex = USERS.findIndex( (user) => { return user.id === id});
+    if (userIndex < 0){        
+        res.status(201).json({message:'operation failed: user not found.'});
+    }
+         
+    // Sending response back    
+    res.status(201).json({user: USERS[userIndex]});
+};
+
+/* ************************************ */
+/* * List Users with Filter             */
+/* ************************************ */
+export const listUsers: RequestHandler = (req, res, next) =>{
+    // Grabbing query from parameters    
     const age =  req.query.age;
     const role = req.query.role;
     const occupation = req.query.occupation;
-    const type: UserType = req.params.type as UserType;
+    const type = req.query.type;
 
     let tmpUsers: User[] = USERS;
     if (age){
@@ -47,28 +73,44 @@ export const getUsers: RequestHandler = (req, res, next) =>{
     }
     if (role){
         tmpUsers = tmpUsers.filter( (user) => user.role === role);
-    }
-    /*
-    if (type){
-        tmpUsers = tmpUsers.filter( (user) => user.type === type);
-    } 
-    */   
-    
+    }    
     if (occupation){
         tmpUsers = tmpUsers.filter( (user) => user.occupation === occupation);
-    } 
+    }
     
+    if (type){        
+        tmpUsers = tmpUsers.filter( (user) => {            
+            return user.type === type;
+        });
+    }    
     res.status(201).json({Users: tmpUsers});  
 };
 
+/* ************************************ */
+/* * Update User                        */
+/* ************************************ */
 export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
 
     //Sending response
     //res.status(201).json({message:'Successfully updated.'});
 };
 
+/* ************************************ */
+/* * Delete User                        */
+/* ************************************ */
 export const deleteUser: RequestHandler<{id: string}> = (req, res, next) =>{
+    // Grabbing url from parameters    
+    const id =  req.params.id;
 
-    //Sending response
-    //res.status(201).json({message:'Successfully deleted.'});
+    // Finding index of item to update
+    const userIndex = USERS.findIndex( (user) => { return user.id === id});
+    if (userIndex < 0){
+        throw new Error("operation failed: user not found");
+    }
+
+    // Delete user
+    USERS.splice(userIndex,1);
+     
+    // Sending response back    
+    res.status(201).json({message:'Successfully deleted.', users: USERS});
 };
