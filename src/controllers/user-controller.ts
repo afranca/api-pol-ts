@@ -19,7 +19,6 @@ export const createUser: RequestHandler = (req, res, next ) => {
     const age = (req.body as RequestBody).age;
     const role = (req.body as RequestBody).role;
     const occupation = (req.body as RequestBody).occupation;
-
     const type: UserType = defineUserType(role,occupation);
 
 
@@ -90,9 +89,36 @@ export const listUsers: RequestHandler = (req, res, next) =>{
 /* * Update User                        */
 /* ************************************ */
 export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
+    // Grabbing possible changes
+    const name = (req.body as RequestBody).name;
+    const age = (req.body as RequestBody).age;
+    const role = (req.body as RequestBody).role;
+    const occupation = (req.body as RequestBody).occupation;
+    const type: UserType = defineUserType(role,occupation);
+
+    // Grabbing id from url
+    const id = req.params.id;
+
+    // Finding user in array
+    const userIndex = USERS.findIndex((user) => user.id === id);
+    if (userIndex<0){
+        throw new Error('operation failed: user not found');
+    }
+    const currentUser = USERS[userIndex];
+
+    // Updating user
+    const updatedUser =  new User(
+        currentUser.id,
+        type,
+        name,
+        age,
+        role,
+        occupation
+    );
+    USERS[userIndex] = updatedUser;
 
     //Sending response
-    //res.status(201).json({message:'Successfully updated.'});
+    res.status(201).json({message:'Successfully updated.', user: USERS[userIndex]});
 };
 
 /* ************************************ */
