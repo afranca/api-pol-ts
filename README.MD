@@ -5,18 +5,18 @@
 - port 3000 available on localhost
 
 ## How to run the API
-- clone the repo
+- Clone the repo
     - 'git clone git@github.com:afranca/api-pol-ts.git'
-- navigate into the api-pol-ts dir
+- Navigate into the api-pol-ts dir
     - 'cd api-pol-ts'
-- download project dependencies
+- Download project dependencies
     - 'npm install'
-- 'compile' typescript code
+- Compile typescript code
     - 'tsc' 
     - use 'tsc -w' if you want to make changes to the code
-- start the server
+- Start the server
     - 'npm start'
-- execute a GET request on postman
+- Execute a GET request on postman
     - 'http://localhost:3000/api/users'    
 
 ## API Description
@@ -75,16 +75,16 @@
                 "message": [ERROR MESSAGE]
             }
 
-## Creating New Blank Project
+## New Blank Project (only if you are creating project from scratch)
 
-### init npm & typescript project
+#### init npm & typescript project
 npm init
 tsc --init
 
-### Production dependencies
+#### Production dependencies
 npm install --save express body-parser
 
-### Dev dependencies
+#### Dev dependencies
 - npm install --save-dev nodemon
 - npm install --save-dev @types/node
 - npm install --save-dev @types/express
