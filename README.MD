@@ -1,9 +1,23 @@
+## Pre-requisites
+- nodejs installed (prefereably version 16, eg.: v16.13.2)
+- npm installed (should be come with nodejs installation)
+- postman installed
+- port 3000 available on localhost
+
 ## How to run the API
-- clone the repo:: git clone git@github.com:afranca/api-pol-ts.git
-- navigate into the api-pol-ts dir::  cd api-pol-ts
-- download dependencies:: npm install
-- 'compile' typescript code:: tsc
-- start the server:: npm start
+- clone the repo
+    - 'git clone git@github.com:afranca/api-pol-ts.git'
+- navigate into the api-pol-ts dir
+    - 'cd api-pol-ts'
+- download project dependencies
+    - 'npm install'
+- 'compile' typescript code
+    - 'tsc' 
+    - use 'tsc -w' if you want to make changes to the code
+- start the server
+    - 'npm start'
+- execute a GET request on postman
+    - 'http://localhost:3000/api/users'    
 
 ## API Description
 #### POST /api/user
