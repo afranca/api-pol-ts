@@ -3,6 +3,9 @@
 - npm installed (should be come with nodejs installation)
 - postman installed
 - port 3000 available on localhost
+- docker installed 
+- mysql workbench installed 
+- start mysql container: `docker run --name api-pol-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql` 
 
 ## How to run the API
 - Clone the repo: `git clone git@github.com:afranca/api-pol-ts.git`
