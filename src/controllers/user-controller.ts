@@ -2,7 +2,9 @@ import { RequestHandler } from "express";
 import { RequestBody } from "../models/request-body";
 import { User } from "../entity/User";
 import { UserType } from "../models/users";
-import { defineUserType } from "../utils/type-util";
+import { deriveUserType } from "../utils/type-util";
+import { AppDataSource } from "../data-source";
+
 
 /* ************************************ */
 /* * Repository                         */
@@ -19,23 +21,40 @@ export const createUser: RequestHandler = (req, res, next ) => {
     const age = (req.body as RequestBody).age;
     const role = (req.body as RequestBody).role;
     const occupation = (req.body as RequestBody).occupation;
-    const type: UserType = defineUserType(role,occupation);
+    const type: UserType = deriveUserType(role,occupation);
 
+    
+    AppDataSource.initialize().then(async () => { 
+        const user =  new User();
+        //user.id = Math.floor(Math.random() * 1000);
+        user.type = type;
+        user.name = name;
+        user.age = age;
+        user.occupation = occupation;
+        user.role = role;
 
-   const user =  new User();
-   user.id = Math.floor(Math.random() * 1000);
-   user.type = type;
-   user.name = name;
-   user.age = age;
-   user.occupation = occupation;
-   user.role = role; 
-   
+        // Storing item (memory, database, queue, etc)
+        await AppDataSource.manager.save(user)
+        console.log("Saved a new user with id: " + user.id)     
+        USERS.push(user);
 
-   // Storing item (memory, database, queue, etc)
-   USERS.push(user);
+        console.log("Loading users from the database...");
+        const users = await AppDataSource.manager.find(User);
+        console.log("Loaded users: ", users);
+     
+        //Sending response
+        res.status(201).json({message:'Successfully created.', entry: user});
 
-    //Sending response
-    res.status(201).json({message:'Successfully created.', entry: user});
+    }).catch(error => { 
+        console.log(error)
+        res.status(500).json({message: error});
+        // Closing connection to Database
+        AppDataSource.destroy()         
+    }).then( async () => {        
+        // Closing connection to Database
+        AppDataSource.destroy()         
+    })
+
 };
 
 /* ************************************ */
@@ -45,15 +64,38 @@ export const getUser: RequestHandler<{id: string}> = (req, res, next) =>{
     // Grabbing url from parameters    
     const id =  +req.params.id;
 
-    // Finding index of item to update
-    const userIndex = USERS.findIndex( (user) => { return user.id === id});
-    if (userIndex < 0){        
-        res.status(201).json({message:'operation failed: user not found.'});
-        return;
-    } 
-         
-    // Sending response back    
-    res.status(201).json({user: USERS[userIndex]});
+    AppDataSource.initialize().then(async (connection) => { 
+
+        // Obtain repository
+        let userRepository = connection.getRepository(User);
+
+        // Not sure why it cant find the 'FindOneOptions' type 
+        /* const findOptions: FindOneOptions  = {  */
+        const findOptions = {
+            where: {
+              id: id          
+            }
+          }
+           
+        // Perform query  
+        let user = await userRepository.findOne(findOptions);  
+        
+        //Send response
+        if (user){
+            res.status(201).json({message:'Successfully Retrieved', entry: user});
+        } else {
+            res.status(404).json({message:'Not found', entry: user});
+        }
+
+    }).catch(error => { 
+        console.log(error)
+        res.status(500).json({message: error});
+        // Closing connection to Database
+        AppDataSource.destroy()         
+    }).then( async () => {        
+        // Closing connection to Database
+        AppDataSource.destroy()         
+    })    
 };
 
 /* ************************************ */
@@ -95,7 +137,7 @@ export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
     const age = (req.body as RequestBody).age;
     const role = (req.body as RequestBody).role;
     const occupation = (req.body as RequestBody).occupation;
-    const type: UserType = defineUserType(role,occupation);
+    const type: UserType = deriveUserType(role,occupation);
 
     // Grabbing id from url
     const id = +req.params.id;
