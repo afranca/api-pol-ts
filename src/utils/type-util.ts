@@ -1,6 +1,6 @@
 import { UserType } from "../models/users";
 
-export const defineUserType = (role: string | undefined, occupation: string | undefined) => {
+export const deriveUserType = (role: string | undefined, occupation: string | undefined) => {
     let type: UserType;
     if (role && occupation ){
         type = UserType.poweruser;  
