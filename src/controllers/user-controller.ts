@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { RequestBody } from "../models/request-body";
-import { User } from "../models/users";
+import { User } from "../entity/User";
 import { UserType } from "../models/users";
 import { defineUserType } from "../utils/type-util";
 
@@ -22,20 +22,20 @@ export const createUser: RequestHandler = (req, res, next ) => {
     const type: UserType = defineUserType(role,occupation);
 
 
-   const newUser =  new User(
-                        Math.random().toString(),
-                        type,
-                        name,
-                        age,
-                        role,
-                        occupation
-                    );
+   const user =  new User();
+   user.id = Math.floor(Math.random() * 1000);
+   user.type = type;
+   user.name = name;
+   user.age = age;
+   user.occupation = occupation;
+   user.role = role; 
+   
 
    // Storing item (memory, database, queue, etc)
-   USERS.push(newUser);
+   USERS.push(user);
 
     //Sending response
-    res.status(201).json({message:'Successfully created.', entry: newUser});
+    res.status(201).json({message:'Successfully created.', entry: user});
 };
 
 /* ************************************ */
@@ -43,13 +43,14 @@ export const createUser: RequestHandler = (req, res, next ) => {
 /* ************************************ */
 export const getUser: RequestHandler<{id: string}> = (req, res, next) =>{
     // Grabbing url from parameters    
-    const id =  req.params.id;
+    const id =  +req.params.id;
 
     // Finding index of item to update
     const userIndex = USERS.findIndex( (user) => { return user.id === id});
     if (userIndex < 0){        
         res.status(201).json({message:'operation failed: user not found.'});
-    }
+        return;
+    } 
          
     // Sending response back    
     res.status(201).json({user: USERS[userIndex]});
@@ -97,7 +98,7 @@ export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
     const type: UserType = defineUserType(role,occupation);
 
     // Grabbing id from url
-    const id = req.params.id;
+    const id = +req.params.id;
 
     // Finding user in array
     const userIndex = USERS.findIndex((user) => user.id === id);
@@ -107,14 +108,14 @@ export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
     const currentUser = USERS[userIndex];
 
     // Updating user
-    const updatedUser =  new User(
-        currentUser.id,
-        type,
-        name,
-        age,
-        role,
-        occupation
-    );
+    const updatedUser =  new User();
+    updatedUser.id = currentUser.id;
+    updatedUser.type = type;
+    updatedUser.name = name;
+    updatedUser.age = age;
+    updatedUser.occupation = occupation;
+    updatedUser.role = role; 
+
     USERS[userIndex] = updatedUser;
 
     //Sending response
@@ -126,7 +127,7 @@ export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
 /* ************************************ */
 export const deleteUser: RequestHandler<{id: string}> = (req, res, next) =>{
     // Grabbing url from parameters    
-    const id =  req.params.id;
+    const id =  +req.params.id;
 
     // Finding index of item to update
     const userIndex = USERS.findIndex( (user) => { return user.id === id});

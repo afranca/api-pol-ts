@@ -1,3 +1,9 @@
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'my-secret-pw';
+flush privileges;
+
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'my-secret-pw';
+flush privileges;
+
 CREATE DATABASE `api-pol` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 CREATE TABLE `api-pol`.`users` (

@@ -1,35 +1,42 @@
 {
-  "name": "api-pol-ts",
-  "version": "1.0.0",
-  "description": "Typescript/Express API",
-  "main": "src/app.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon dist/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/afranca/api-pol-ts.git"
-  },
-  "keywords": [
-    "typescript",
-    "nodejs",
-    "express",
-    "bjss"
-  ],
-  "author": "Alexandre Franca",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/afranca/api-pol-ts/issues"
-  },
-  "homepage": "https://github.com/afranca/api-pol-ts#readme",
-  "dependencies": {
-    "body-parser": "^1.20.1",
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.14",
-    "@types/node": "^18.11.13",
-    "nodemon": "^2.0.20"
-  }
+   "name": "api-pol-ts",
+   "version": "1.0.0",
+   "description": "Typescript/Express API",
+   "main": "src/app.ts",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon dist/app.js",
+      "start2": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/afranca/api-pol-ts.git"
+   },
+   "keywords": [
+      "typescript",
+      "nodejs",
+      "express",
+      "bjss"
+   ],
+   "author": "Alexandre Franca",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/afranca/api-pol-ts/issues"
+   },
+   "homepage": "https://github.com/afranca/api-pol-ts#readme",
+   "dependencies": {
+      "body-parser": "^1.20.1",
+      "express": "^4.18.2",
+      "typeorm": "0.3.11",
+      "reflect-metadata": "^0.1.13",
+      "mysql": "^2.14.1"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.14",
+      "@types/node": "^16.11.10",
+      "nodemon": "^2.0.20",
+      "ts-node": "10.7.0",
+      "typescript": "4.5.2"
+   }
 }

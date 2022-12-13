@@ -78,9 +78,15 @@ npm init
 tsc --init
 
 #### Production dependencies
-npm install --save express body-parser
+- npm install --save express body-parser
+- npm install typeorm -g
+- npm install reflect-metadata -g
+- npm install mysql -g
+
 
 #### Dev dependencies
 - npm install --save-dev nodemon
 - npm install --save-dev @types/node
 - npm install --save-dev @types/express
+- npm install @types/node -g
+- npm install class-transformer -g
