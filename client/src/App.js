@@ -11,10 +11,12 @@ import BoxInput from "./components/BoxInput";
 function App() {
 
   const [userList, setUserList] = useState([]);
+  const [filters, setFilters] = useState([]);
 
-  const fecthUsers = () =>{
-    console.log('fecthing from database');
-    Axios.get("http://localhost:3001/api/users").then( (response)=>{
+  const fecthUsers = (filts) =>{
+    console.log('fecthing from database:'+filts);
+    setFilters(filts);
+    Axios.get("http://localhost:3001/api/users"+filts).then( (response)=>{
       setUserList(response.data.Users)
     });
   }
@@ -23,7 +25,11 @@ function App() {
     console.log('fecthing from database');
     Axios.post("http://localhost:3001/api/users", user).then( (response)=>{
       console.log(response.data);
-      fecthUsers();
+      fecthUsers(filters);
+      /*
+      setUserList( (prevState)=> {
+        return {...prevState,user}
+      })*/
     });
   }
 

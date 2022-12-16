@@ -16,6 +16,10 @@ export default function BoxInput(props) {
       occupation: occupationRef.current.value
     }
     props.onCreate(user)
+    nameRef.current.value='';
+    ageRef.current.value='';
+    roleRef.current.value='';
+    occupationRef.current.value='';
   }
 
 
