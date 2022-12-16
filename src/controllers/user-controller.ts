@@ -48,11 +48,11 @@ export const getUser: RequestHandler<{id: string}> = (req, res, next) =>{
     // Finding index of item to update
     const userIndex = USERS.findIndex( (user) => { return user.id === id});
     if (userIndex < 0){        
-        res.status(201).json({message:'operation failed: user not found.'});
+        res.status(400).json({message:'operation failed: user not found.'});
     }
          
     // Sending response back    
-    res.status(201).json({user: USERS[userIndex]});
+    res.status(200).json({user: USERS[userIndex]});
 };
 
 /* ************************************ */
@@ -82,7 +82,7 @@ export const listUsers: RequestHandler = (req, res, next) =>{
             return user.type === type;
         });
     }    
-    res.status(201).json({Users: tmpUsers});  
+    res.status(200).json({Users: tmpUsers});  
 };
 
 /* ************************************ */
@@ -118,7 +118,7 @@ export const updateUser: RequestHandler<{id: string}> = (req, res, next) =>{
     USERS[userIndex] = updatedUser;
 
     //Sending response
-    res.status(201).json({message:'Successfully updated.', user: USERS[userIndex]});
+    res.status(200).json({message:'Successfully updated.', user: USERS[userIndex]});
 };
 
 /* ************************************ */
@@ -138,5 +138,5 @@ export const deleteUser: RequestHandler<{id: string}> = (req, res, next) =>{
     USERS.splice(userIndex,1);
      
     // Sending response back    
-    res.status(201).json({message:'Successfully deleted.', users: USERS});
+    res.status(200).json({message:'Successfully deleted.', users: USERS});
 };
