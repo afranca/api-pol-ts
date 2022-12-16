@@ -16,7 +16,7 @@ const USERS: User[] = [];
 export const createUser: RequestHandler = (req, res, next ) => {
     
     const name = (req.body as RequestBody).name;
-    const age = (req.body as RequestBody).age;
+    const age = +(req.body as RequestBody).age;
     const role = (req.body as RequestBody).role;
     const occupation = (req.body as RequestBody).occupation;
     const type: UserType = defineUserType(role,occupation);
