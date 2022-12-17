@@ -13,6 +13,17 @@ function App() {
   const [userList, setUserList] = useState([]);
   const [filters, setFilters] = useState([]);
 
+  const [displayBoxNew, setDisplayBoxNew] = useState(false);  
+
+  const displayBoxNewHandler = () =>{
+    setDisplayBoxNew(true);
+  }
+
+  const hideBoxNewHandler = () =>{
+    setDisplayBoxNew(false);
+  }
+
+
   const fecthUsers = (filts) =>{
     console.log('fecthing from database:'+filts);
     setFilters(filts);
@@ -49,8 +60,12 @@ function App() {
             <div class="cl">&nbsp;</div>
 
             <div id="content">
-              <BoxList items={userList} onDeleteItem={deleteItemHandler}/>
-              <BoxNew />
+              <BoxList items={userList} onDeleteItem={deleteItemHandler} 
+              showModal={displayBoxNewHandler}              
+              />
+              
+              { displayBoxNew && <BoxNew hideModal={hideBoxNewHandler}/>}
+              
             </div>
 
             <div id="sidebar">

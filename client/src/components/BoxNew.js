@@ -1,9 +1,9 @@
 import React from "react";
 import Modal from "../UI/Modal";
 
-export default function BoxNew() {
+export default function BoxNew(props) {
   return (
-    <Modal>
+    <Modal onClose={props.hideModal}>
     <div class="box">
       <div class="box-head">
         <h2>Add New Article</h2>
@@ -45,6 +45,7 @@ export default function BoxNew() {
         </div>
       </form>
     </div>
+    <button onClick={props.hideModal}>Close</button>
     </Modal>
   );
 }

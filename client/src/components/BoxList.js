@@ -13,6 +13,7 @@ export default function List(props) {
         role={user.role}
         occupation={user.occupation}
         onDelete={props.onDeleteItem}
+        showModal={props.showModal}
   />);
 
   return (
