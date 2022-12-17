@@ -1,7 +1,9 @@
 import React from "react";
+import Modal from "../UI/Modal";
 
 export default function BoxNew() {
   return (
+    <Modal>
     <div class="box">
       <div class="box-head">
         <h2>Add New Article</h2>
@@ -43,5 +45,6 @@ export default function BoxNew() {
         </div>
       </form>
     </div>
+    </Modal>
   );
 }
