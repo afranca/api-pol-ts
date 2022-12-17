@@ -1,47 +1,54 @@
 import React from "react";
 import Modal from "../UI/Modal";
+import classes from './BoxNew.module.css';
 
 export default function BoxNew(props) {
+
+  const fieldSize1 = `classes.field classes.size1`;
   return (
     <Modal onClose={props.hideModal}>
-    <div class="box">
-      <div class="box-head">
-        <h2>Add New Article</h2>
+    <div className={classes.box}>
+      <div className={classes['box-head']}>
+        <h2>User</h2>
       </div>
-      <form action="#" method="post">
-        <div class="form">
-          <p>
-            {" "}
-            <span class="req">max 100 symbols</span>
+      <form>
+        <div className={classes.form}>
+          <p>            
             <label>
-              Article Title <span>(Required Field)</span>
+              Name<span>(Required)</span>
             </label>
-            <input type="text" class="field size1" />
+            <input type="text" id="name" className={classes.field} />
           </p>
-          <p class="inline-field">
+          <p>
+            <label>
+              Age<span>(Required)</span>
+            </label>
+            <input type="text" id="age" className={classes.field} />
+          </p>
+          <p>
+            <label>
+              Role<span>(Optional)</span>
+            </label>
+            <input type="text" id="role" className={classes.field} />
+          </p>
+          <p>
+            <label>
+              Occupation<span>(Optional)</span>
+            </label>
+            <input type="text" id="occupation" className={classes.field}/>
+          </p>                    
+          <p className={classes['inline-field']}>
             <label>Date</label>
-            <select class="field size2">
+            <select className={classes.field}>
               <option value="">23</option>
             </select>
-            <select class="field size3">
-              <option value="">July</option>
-            </select>
-            <select class="field size3">
-              <option value="">2009</option>
-            </select>
           </p>
-          <p>
-            {" "}
-            <span class="req">max 100 symbols</span>
-            <label>
-              Content <span>(Required Field)</span>
-            </label>
-            <textarea class="field size1" rows="10" cols="30"></textarea>
-          </p>
+          
+
         </div>
-        <div class="buttons">
-          <input type="button" class="button" value="preview" />
-          <input type="submit" class="button" value="submit" />
+        <div className={classes.buttons}>
+          <input type="button" className={classes.button} value="preview" />
+          <input type="submit" className={classes.button} value="submit" />
         </div>
       </form>
     </div>
