@@ -26,13 +26,16 @@ function App() {
     Axios.post("http://localhost:3001/api/users", user).then( (response)=>{
       console.log(response.data);
       fecthUsers(filters);
-      /*
-      setUserList( (prevState)=> {
-        return {...prevState,user}
-      })*/
     });
   }
 
+  const deleteItemHandler = (id) =>{
+    console.log('deleting from database');
+    Axios.delete("http://localhost:3001/api/users/"+id).then( (response)=>{
+      console.log(response.data);
+      fecthUsers(filters);
+    });
+  }
 
   return (
     <div className="App">
@@ -46,7 +49,7 @@ function App() {
             <div class="cl">&nbsp;</div>
 
             <div id="content">
-              <BoxList items={userList}/>
+              <BoxList items={userList} onDeleteItem={deleteItemHandler}/>
               <BoxNew />
             </div>
 

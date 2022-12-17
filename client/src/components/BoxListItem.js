@@ -1,6 +1,15 @@
 import React from "react";
 
 export default function BoxListItem(props) {
+  const deleteHandler = () => {
+    console.log("Delete item: " + props.id);
+    props.onDelete(props.id);
+  };
+
+  const updateHandler = () => {
+    console.log("Update item: " + props.id);
+  };
+
   return (
     <tr>
       <td>
@@ -14,12 +23,12 @@ export default function BoxListItem(props) {
       <td>{props.occupation}</td>
 
       <td>
-        <a href="#" class="ico del">
+        <div class="ico del" onClick={deleteHandler}>
           Delete
-        </a>
-        <a href="#" class="ico edit">
+        </div>
+        <div class="ico edit" onClick={updateHandler}>
           Edit
-        </a>
+        </div>
       </td>
     </tr>
   );

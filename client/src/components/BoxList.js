@@ -12,6 +12,7 @@ export default function List(props) {
         age={user.age}
         role={user.role}
         occupation={user.occupation}
+        onDelete={props.onDeleteItem}
   />);
 
   return (
