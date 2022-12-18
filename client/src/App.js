@@ -15,6 +15,8 @@ function App() {
 
   const [displayBoxNew, setDisplayBoxNew] = useState(false);  
 
+  const [user, setUser] = useState();
+
   const displayBoxNewHandler = () =>{
     setDisplayBoxNew(true);
   }
@@ -23,7 +25,13 @@ function App() {
     setDisplayBoxNew(false);
   }
 
-
+  const fecthUser = (id) =>{
+    Axios.get("http://localhost:3001/api/users/"+id).then( (response)=>{
+      console.log('fecthing single user from database:');
+      console.log(response.data);
+      setUser(response.data.user)
+    });
+  }
   const fecthUsers = (filts) =>{
     console.log('fecthing from database:'+filts);
     setFilters(filts);
@@ -60,10 +68,10 @@ function App() {
             <div class="cl">&nbsp;</div>
 
             <div id="content">
-              <BoxList items={userList} onDeleteItem={deleteItemHandler} 
+              <BoxList items={userList} onDeleteItem={deleteItemHandler} onEditItem={fecthUser} 
               showModal={displayBoxNewHandler}              
               />
-              
+
               { displayBoxNew && <BoxNew hideModal={hideBoxNewHandler}/>}
               
             </div>

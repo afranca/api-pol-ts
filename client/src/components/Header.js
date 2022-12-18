@@ -21,11 +21,6 @@ export default function Header() {
                 <span>Dashboard</span>
               </a>
             </li>
-            <li>
-              <a href="#">
-                <span>New Articles</span>
-              </a>
-            </li>
           </ul>
         </div>
       </div>

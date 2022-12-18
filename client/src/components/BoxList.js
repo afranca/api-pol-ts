@@ -14,6 +14,7 @@ export default function List(props) {
         occupation={user.occupation}
         onDelete={props.onDeleteItem}
         showModal={props.showModal}
+        onEdit={props.onEditItem}
   />);
 
   return (

@@ -9,6 +9,7 @@ export default function BoxListItem(props) {
   const updateHandler = () => {
     console.log("Update item: " + props.id);
     props.showModal();
+    props.onEdit(props.id);
   };
 
   return (
