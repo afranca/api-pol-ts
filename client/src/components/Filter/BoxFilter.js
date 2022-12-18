@@ -49,19 +49,19 @@ export default function BoxFilter(props) {
         <div className={classes.sort}>
           <form onSubmit={onSubmitHandler}>
             <div>
-              <label>Age</label>
+              <label className={classes.fieldLabel}> Age</label>
               <input className={classes.field} tpe="text" id="age" ref={ageRef}/>
             </div>
             <div>
-              <label>Role</label>
+              <label className={classes.fieldLabel}>Role</label>
               <input className={classes.field} tpe="text" id="role" ref={roleRef} />
             </div>
             <div>
-              <label>Occupation</label>
+              <label className={classes.fieldLabel}>Occupation</label>
               <input className={classes.field} tpe="text" id="occupation" ref={occupationRef} />
             </div>
             <div>
-              <label>Type</label>
+              <label className={classes.fieldLabel}>Type</label>
               <select className={classes.field} ref={typeRef}>
                 <option value="">Choose</option>
                 <option value="admin">Admin</option>

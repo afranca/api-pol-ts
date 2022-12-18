@@ -36,19 +36,19 @@ export default function BoxInput(props) {
         <div className={classes.sort}>
           <form onSubmit={submitHanlder}> 
             <div>
-              <label>Name</label>
+              <label className={classes.fieldLabel}>Name</label>
               <input className={classes.field} type="text" id="name" ref={nameRef}/>
             </div>
             <div>
-              <label>Age</label>
+              <label className={classes.fieldLabel}>Age</label>
               <input className={classes.field} type="text" id="age" ref={ageRef}/>
             </div>
             <div>
-              <label>Role</label>
+              <label className={classes.fieldLabel}>Role</label>
               <input className={classes.field} type="text" id="role" ref={roleRef}/>
             </div>
             <div>
-              <label>Occupation</label>
+              <label className={classes.fieldLabel}>Occupation</label>
               <input className={classes.field} type="text" id="occupation" ref={occupationRef} />
             </div>  
             <p>

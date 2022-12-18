@@ -1,7 +1,7 @@
 import Footer from "./components/UI/Footer";
 import Header from "./components/UI/Header";
 import BoxList from "./components/List/BoxList";
-import Message from "./components/Messages/Message";
+//import Message from "./components/Messages/Message";
 import BoxNew from "./components/BoxEdit";
 import BoxFilter from "./components/Filter/BoxFilter";
 import Axios from 'axios';
@@ -63,8 +63,7 @@ function App() {
 
       <div id="container">
         <div className={classes.shell}>
-          <Message text="Operation completed" type="success" />
-
+          
           <div id="main">
             <div className={classes.cl}>&nbsp;</div>
 

@@ -7,9 +7,8 @@ export default function Header() {
     <div id="header">
       <div className={classes.shell}>
         <div id="top">
-          <h1>SpringTime</h1>
-          <div id="top-navigation">
-            {" "}
+          <h1>Typescript API</h1>
+          <div id="top-navigation">            
             PoL API by <strong>Alexandre Franca</strong>
           </div>
         </div>

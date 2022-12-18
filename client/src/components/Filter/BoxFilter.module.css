@@ -24,3 +24,5 @@
 .sort select.field{ width:203px; }
 
 .cl { font-size:0; line-height:0; clear:both; display:block; height:0; }
+
+.fieldLabel { float:fluid; text-align: left; padding:5px;}
