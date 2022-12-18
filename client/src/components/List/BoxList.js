@@ -1,5 +1,6 @@
 import React from "react";
 import BoxListItem from "./BoxListItem";
+import classes from './BoxList.module.css';
 
 export default function List(props) {
 
@@ -18,11 +19,11 @@ export default function List(props) {
   />);
 
   return (
-    <div class="box">
-      <div class="box-head">
-        <h2 class="left">User List</h2>
+    <div className={classes.box}>
+      <div className={classes['box-head']}>
+        <h2 className={classes.left}>User List</h2>
       </div>
-      <div class="table">
+      <div className={classes.table}>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th>Name</th>
@@ -30,7 +31,7 @@ export default function List(props) {
             <th>Type</th>
             <th>Role</th>
             <th>Occupation</th>
-            <th width="110" class="ac">
+            <th width="110" className={classes.ac}>
               Content Control
             </th>
           </tr>
@@ -38,9 +39,9 @@ export default function List(props) {
           { itemList }
 
         </table>
-        <div class="pagging">
-          <div class="left">Showing 1-12 of 44</div>
-          <div class="right">
+        <div className={classes.pagging}>
+          <div className={classes.left}>Showing 1-12 of 44</div>
+          <div className={classes.right}>
             {" "}
             <a href="#">Previous</a> <a href="#">1</a> <a href="#">2</a>{" "}
             <a href="#">3</a> <a href="#">4</a> <a href="#">245</a>{" "}

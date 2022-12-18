@@ -1,4 +1,5 @@
 import React, {useRef} from "react";
+import classes from './BoxFilter.module.css';
 
 export default function BoxFilter(props) {
   const ageRef = useRef();
@@ -40,28 +41,28 @@ export default function BoxFilter(props) {
   };
 
   return (
-    <div class="box">
-      <div class="box-head">
-        <h2>Management</h2>
+    <div className={classes.box}>
+      <div className={classes['box-head']}>
+        <h2>Filters</h2>
       </div>
-      <div class="box-content">
-        <div class="sort">
+      <div className={classes['box-content']}>
+        <div className={classes.sort}>
           <form onSubmit={onSubmitHandler}>
             <div>
               <label>Age</label>
-              <input class="field" tpe="text" id="age" ref={ageRef}/>
+              <input className={classes.field} tpe="text" id="age" ref={ageRef}/>
             </div>
             <div>
               <label>Role</label>
-              <input class="field" tpe="text" id="role" ref={roleRef} />
+              <input className={classes.field} tpe="text" id="role" ref={roleRef} />
             </div>
             <div>
               <label>Occupation</label>
-              <input class="field" tpe="text" id="occupation" ref={occupationRef} />
+              <input className={classes.field} tpe="text" id="occupation" ref={occupationRef} />
             </div>
             <div>
               <label>Type</label>
-              <select class="field" ref={typeRef}>
+              <select className={classes.field} ref={typeRef}>
                 <option value="">Choose</option>
                 <option value="admin">Admin</option>
                 <option value="employee">Employee</option>
@@ -69,7 +70,7 @@ export default function BoxFilter(props) {
               </select>
             </div>
             <p>
-              <button type="submit"> SEARCH </button>
+              <button type="submit" className={classes.button}> SEARCH </button>
             </p>
           </form>
         </div>

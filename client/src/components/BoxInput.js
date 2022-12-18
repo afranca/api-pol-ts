@@ -1,4 +1,5 @@
 import React, {useRef} from "react";
+import classes from "./BoxInput.module.css";
 
 export default function BoxInput(props) {
 
@@ -24,34 +25,34 @@ export default function BoxInput(props) {
 
 
   return (
-    <div class="box">
-      <div class="box-head">
+    <div className={classes.box}>
+      <div className={classes['box-head']}>
         <h2>Add New</h2>
       </div>
-      <div class="box-content">        
+      <div className={classes['box-content']}>        
         
-        <div class="cl">&nbsp;</div>
+        <div className={classes.cl}>&nbsp;</div>
                 
-        <div class="sort">
+        <div className={classes.sort}>
           <form onSubmit={submitHanlder}> 
             <div>
               <label>Name</label>
-              <input type="text" id="name" ref={nameRef}/>
+              <input className={classes.field} type="text" id="name" ref={nameRef}/>
             </div>
             <div>
               <label>Age</label>
-              <input type="text" id="age" ref={ageRef}/>
+              <input className={classes.field} type="text" id="age" ref={ageRef}/>
             </div>
             <div>
               <label>Role</label>
-              <input type="text" id="role" ref={roleRef}/>
+              <input className={classes.field} type="text" id="role" ref={roleRef}/>
             </div>
             <div>
               <label>Occupation</label>
-              <input type="text" id="occupation" ref={occupationRef} />
+              <input className={classes.field} type="text" id="occupation" ref={occupationRef} />
             </div>  
             <p>
-              <button type="submit"> Add New</button>
+              <button className={classes.button} type="submit"> Add New</button>
             </p>                                  
           </form>
 

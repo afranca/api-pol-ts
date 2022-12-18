@@ -7,6 +7,7 @@ import BoxFilter from "./components/Filter/BoxFilter";
 import Axios from 'axios';
 import React, {useState} from "react";
 import BoxInput from "./components/BoxInput";
+import classes from './App.module.css';
 
 function App() {
 
@@ -57,15 +58,15 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={classes.App}>
       <Header />
 
       <div id="container">
-        <div class="shell">
+        <div className={classes.shell}>
           <Message text="Operation completed" type="success" />
 
           <div id="main">
-            <div class="cl">&nbsp;</div>
+            <div className={classes.cl}>&nbsp;</div>
 
             <div id="content">
               <BoxList items={userList} onDeleteItem={deleteItemHandler} onEditItem={fecthUser} 
@@ -81,7 +82,7 @@ function App() {
               <BoxInput  onCreate={createHandler}/>
             </div>
 
-            <div class="cl">&nbsp;</div>
+            <div className={classes.cl}>&nbsp;</div>
           </div>
         </div>
       </div>

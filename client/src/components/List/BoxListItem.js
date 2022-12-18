@@ -1,4 +1,5 @@
 import React from "react";
+import classes from './BoxListItem.module.css';
 
 export default function BoxListItem(props) {
   const deleteHandler = () => {
@@ -11,6 +12,9 @@ export default function BoxListItem(props) {
     props.showModal();
     props.onEdit(props.id);
   };
+
+  const icoDel = `${classes.ico} ${classes.del}`;
+  const icoEdit = `${classes.ico} ${classes.edit}`;
 
   return (
     <tr>
@@ -25,10 +29,10 @@ export default function BoxListItem(props) {
       <td>{props.occupation}</td>
 
       <td>
-        <div class="ico del" onClick={deleteHandler}>
+        <div className={icoDel} onClick={deleteHandler}>
           Delete
         </div>
-        <div class="ico edit" onClick={updateHandler}>
+        <div className={icoEdit} onClick={updateHandler}>
           Edit
         </div>
       </td>
