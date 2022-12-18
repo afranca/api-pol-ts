@@ -3,5 +3,5 @@
 .left, .alignleft { float:left; display:inline; }
 .right, .alignright { float:right; display:inline; }
 
-#footer { height:44px; background:url(../images/footer.gif); line-height:44px; color:#fff;}
+#footer { height:44px; background:url(../../images/footer.gif); line-height:44px; color:#fff;}
 #footer a{ color:#fff; }

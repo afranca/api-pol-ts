@@ -1,7 +1,0 @@
-
-.msg { position:relative; padding-right:35px; margin-bottom:10px; }
-.msg p{ padding:9px 10px 9px 40px; font-size:12px; background-repeat:no-repeat; background-position:10px 5px;}
-.msg a.close{ font-size:0; line-height:0; position:absolute; top:0; right:0; width:34px; height:34px; background:url(../images/close.gif); text-indent: -4000px;}
-
-.msgOk p{ background-color:#fffac2; border:solid 1px #dbd6a2; color:#5e5c40; background-image:url(../images/msg-ok.gif); }
-.msgError p{ background-color:#f3c598; border:solid 1px #e8b084; color:#ba4c32; background-image:url(../images/msg-error.gif);  }

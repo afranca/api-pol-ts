@@ -1,6 +1,6 @@
 import React from "react";
-import Modal from "../UI/Modal";
-import classes from './BoxNew.module.css';
+import Modal from "./UI/Modal";
+import classes from './BoxEdit.module.css';
 
 export default function BoxNew(props) {
 
