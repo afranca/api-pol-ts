@@ -63,7 +63,7 @@ export default function BoxFilter(props) {
             <div>
               <label className={classes.fieldLabel}>Type</label>
               <select className={classes.field} ref={typeRef}>
-                <option value="">Choose</option>
+                <option value="">All</option>
                 <option value="admin">Admin</option>
                 <option value="employee">Employee</option>
                 <option value="poweruser">Poweruser</option>
