@@ -6,7 +6,8 @@
 	"scripts": {
 		"createUser": "mocha -r ts-node/register test/createUser.test.ts",
 		"getUser": "mocha -r ts-node/register test/getUser.test.ts",
-		"test": "npm run createUser && npm run getUser",
+		"deleteUser": "mocha -r ts-node/register test/deleteUser.test.ts",
+		"test": "npm run createUser && npm run getUser && npm run deleteUser",
 		"start": "nodemon dist/app.js"
 	},
 	"repository": {

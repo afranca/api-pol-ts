@@ -10,7 +10,7 @@ describe("Get users", async () => {
 	it("Get all users ", async () => {
 		let response = await common.getRequest("");
 		response.body.Users.forEach(function (user: any) {
-			expect(user.name).to.be.oneOf(["Test User1", "Test User2", "Test User3"]);
+			expect(user.name).to.be.oneOf(["Test User1", "Test User2", "Test User3", "Test User6"]);
 		});
 	});
 
@@ -41,6 +41,28 @@ describe("Get users", async () => {
 		let response = await common.getRequest("/?type=employee");
 		response.body.Users.forEach(function (user: any) {
 			expect(user.type).to.be.equal("employee");
+		});
+	});
+
+	it("Get users whose role is Head ", async () => {
+		let response = await common.getRequest("/?role=Head");
+		response.body.Users.forEach(function (user: any) {
+			expect(user.role).to.be.equal("Head");
+		});
+	});
+
+	it("Get users whose occupation is IT Professional ", async () => {
+		let response = await common.getRequest("/?occupation=IT Professional");
+		response.body.Users.forEach(function (user: any) {
+			expect(user.occupation).to.be.equal("IT Professional");
+		});
+	});
+
+	it("Get users whose type is admin and role is head ", async () => {
+		let response = await common.getRequest("/?type=admin&role=Head");
+		response.body.Users.forEach(function (user: any) {
+			expect(user.type).to.be.equal("admin");
+			expect(user.role).to.be.equal("Head");
 		});
 	});
 });

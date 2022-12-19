@@ -24,5 +24,15 @@ class Common {
 		expect(response.statusCode).to.be.equal(201);
 		return response;
 	}
+
+	async deleteRequest(id: string) {
+		const response = await request(url.dev.baseUrl)
+			.delete("/api/users/" + id)
+			.set("Accept", "application/json")
+			.set("Content-Type", "application/json");
+		expect(response.statusCode).to.be.equal(201);
+		expect(response.body.message).to.be.equal("Successfully deleted.");
+		return response;
+	}
 }
 export default Common;

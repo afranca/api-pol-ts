@@ -12,6 +12,8 @@ describe("Create users", async () => {
 	it("Create admin type user ", async () => {
 		let response = await common.postRequest(userData.userWithRoleAndWithoutOccupation());
 		expect(response.body.entry.type).to.be.equal("admin");
+		await common.postRequest(userData.user1WithRoleAndWithoutOccupation());
+		expect(response.body.entry.type).to.be.equal("admin");
 	});
 
 	it("Create employee type user ", async () => {
