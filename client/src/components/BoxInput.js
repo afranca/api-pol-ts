@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./BoxInput.module.css";
 
 export default function BoxInput(props) {
@@ -7,26 +7,46 @@ export default function BoxInput(props) {
   const roleRef = useRef("");
   const occupationRef = useRef("");
 
+  const [nameValid, setNameValid] = useState(true);
+  const [ageValid, setAgeValid] = useState(true);
+  const [roleValid, setRoleValid] = useState(true);
+  const [occupationValid, setOccupationValid] = useState(true);
+  
+
   const submitHanlder = (event) => {
     event.preventDefault();
     let name = nameRef.current.value;
     let age = +ageRef.current.value;
     let role = roleRef.current.value;
     let occupation = occupationRef.current.value;
-        
-    if (role.trim().length === 0 && occupation.length === 0) {
-      //console.log("First return");
-      return;
-    }
+    setRoleValid(true);
+    setOccupationValid(true);
+    setNameValid(true);
+    setAgeValid(true);
 
     if (name.trim().length < 1){
-      return;
+      setNameValid(false);      
+    } else {
+      setNameValid(true);
     }
 
     if (age < 1){
-      return;
+      setAgeValid(false);      
+    } else {
+      setAgeValid(true);
+    }
+    
+    if (role.trim().length === 0 && occupation.length === 0) {      
+      setRoleValid(false);
+      setOccupationValid(false);      
+    } else {
+      setRoleValid(true);
+      setOccupationValid(true);
     }
 
+    if (!nameValid || !ageValid || !occupationValid || !roleValid){
+      return;
+    }
 
     const user = {
       name: nameRef.current.value,
@@ -49,27 +69,27 @@ export default function BoxInput(props) {
       <div className={classes["box-content"]}>
         <div className={classes.cl}>&nbsp;</div>
 
-        <div className={classes.sort}>
+        
           <form onSubmit={submitHanlder}>
-            <div>
+          <div className={`${classes.sort} ${!nameValid && classes.invalid}`}>    
               <label className={classes.fieldLabel}>Name</label>
-              <input
+              <input                
                 className={classes.field}
                 type="text"
                 id="name"
                 ref={nameRef}
               />
             </div>
-            <div>
-              <label className={classes.fieldLabel}>Age</label>
+            <div className={`${classes.sort} ${!ageValid && classes.invalid}`}>              
+              <label className={`${classes.fieldLabel}`}>Age</label>
               <input
-                className={classes.field}
+                className={`${classes.field}`}
                 type="text"
                 id="age"
                 ref={ageRef}
               />
             </div>
-            <div>
+            <div className={`${classes.sort} ${!roleValid && classes.invalid}`}>   
               <label className={classes.fieldLabel}>Role</label>
               <input
                 className={classes.field}
@@ -78,7 +98,7 @@ export default function BoxInput(props) {
                 ref={roleRef}
               />
             </div>
-            <div>
+            <div className={`${classes.sort} ${!occupationValid && classes.invalid}`}>   
               <label className={classes.fieldLabel}>Occupation</label>
               <input
                 className={classes.field}
@@ -87,14 +107,13 @@ export default function BoxInput(props) {
                 ref={occupationRef}
               />
             </div>
-            <p>
-              <button className={classes.button} type="submit">
-                {" "}
+            <div className={classes.sort}>
+              <button className={classes.button} type="submit">                
                 Add New
               </button>
-            </p>
+            </div>
           </form>
-        </div>
+       
       </div>
     </div>
   );

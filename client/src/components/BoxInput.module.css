@@ -11,18 +11,24 @@
 .box-content p { padding-top:10px; }
 
 .field { border:solid 1px #d3cfc7; background:#fff; padding:5px; }
+.fieldInvalid { border:solid 1px #060502; background:rgb(240, 172, 172); padding:5px; }
 .small-field { border:solid 1px #d3cfc7; background:#fff; padding:3px 1px; font-size:11px; }
+.fieldLabel { float:fluid; text-align: left; padding:5px;;}
+.fieldLabelInvalid { float:fluid; text-align: left; padding:5px; color: #ba4c32}
 
 .button { background:#eee url(../images/button.gif) repeat-x 0 0; border:solid 1px #b1a874; color:#7f7f7f; font-size:11px; padding:2px 6px 2px 6px; cursor:pointer; line-height:14px !important; }
 .button:hover { color:#333; border-color:#857b42; }
 
-.field, .button { -moz-border-radius:4px; -webkit-border-radius:4px; }
-
-.sort { border-top:solid 1px #e0e0e0; padding-top:10px; margin-top:15px;   }
 .sort label{ display:block; font-weight: bold;}
-.sort .field{ display:block; margin-top:5px; }
-.sort select.field{ width:203px; }
+.sort field{ display:block; margin-top:5px; border-color: rgb(61, 57, 57);}
 
+.sort.invalid input {
+    border-color: red;
+    background-color: #f2dfdb;
+}
+.sort.invalid label {
+    border-color: red;    
+}
+
+.field, .button { -moz-border-radius:4px; -webkit-border-radius:4px; }
 .cl { font-size:0; line-height:0; clear:both; display:block; height:0; }
-
-.fieldLabel { float:fluid; text-align: left; padding:5px;}
