@@ -21,7 +21,7 @@ class Common {
 			.get("/api/users" + type)
 			.set("Accept", "application/json")
 			.set("Content-Type", "application/json");
-		expect(response.statusCode).to.be.equal(201);
+		expect(response.statusCode).to.be.equal(200);
 		return response;
 	}
 
