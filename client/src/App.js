@@ -88,7 +88,7 @@ function App() {
 
             <div id="sidebar">
               <BoxFilter fetchFunction={fetchListItems} />
-              <BoxInput onCreate={createHandler} />
+              <BoxInput onSubmit={createHandler} />
             </div>
 
             <div className={classes.cl}>&nbsp;</div>
