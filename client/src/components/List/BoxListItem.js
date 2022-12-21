@@ -8,9 +8,10 @@ export default function BoxListItem(props) {
   };
 
   const updateHandler = () => {
-    console.log("Update item: " + props.id);
-    props.showModal();
+    //console.log("Executing updateHandler (BoxListItem)");
+    //console.log(props.id);
     props.onEdit(props.id);
+    //props.showModal();
   };
 
   const icoDel = `${classes.ico} ${classes.del}`;
