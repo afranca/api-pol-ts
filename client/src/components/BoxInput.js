@@ -19,32 +19,30 @@ export default function BoxInput(props) {
     let age = +ageRef.current.value;
     let role = roleRef.current.value;
     let occupation = occupationRef.current.value;
-    setRoleValid(true);
-    setOccupationValid(true);
-    setNameValid(true);
-    setAgeValid(true);
+    
 
-    if (name.trim().length < 1){
+    if (name.trim().length < 1){      
       setNameValid(false);      
-    } else {
+    } else {      
       setNameValid(true);
     }
 
     if (age < 1){
-      setAgeValid(false);      
-    } else {
+      setAgeValid(false);            
+    } else {      
       setAgeValid(true);
     }
     
     if (role.trim().length === 0 && occupation.length === 0) {      
       setRoleValid(false);
-      setOccupationValid(false);      
+      setOccupationValid(false);            
     } else {
       setRoleValid(true);
       setOccupationValid(true);
     }
 
     if (!nameValid || !ageValid || !occupationValid || !roleValid){
+      console.log("INVALID");
       return;
     }
 
@@ -81,7 +79,7 @@ export default function BoxInput(props) {
               />
             </div>
             <div className={`${classes.sort} ${!ageValid && classes.invalid}`}>              
-              <label className={`${classes.fieldLabel}`}>Age</label>
+              <label className={classes.fieldLabel}>Age</label>
               <input
                 className={`${classes.field}`}
                 type="text"
