@@ -30,7 +30,7 @@ describe("Create users", async () => {
 		expect(response.body.entry.occupation).to.be.equal("Tester");
 	});
 
-	it.only("Create poweruser type user", async () => {
+	it("Create poweruser type user", async () => {
 		let response = await common.postRequest(userData.userWithRoleAndOccupation());
 		expect(response.body.entry.type).to.be.equal("poweruser");
 		expect(response.body.entry.name).to.be.equal("Test User1");
