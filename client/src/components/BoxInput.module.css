@@ -11,10 +11,8 @@
 .box-content p { padding-top:10px; }
 
 .field { border:solid 1px #d3cfc7; background:#fff; padding:5px; }
-.fieldInvalid { border:solid 1px #060502; background:rgb(240, 172, 172); padding:5px; }
 .small-field { border:solid 1px #d3cfc7; background:#fff; padding:3px 1px; font-size:11px; }
 .fieldLabel { float:fluid; text-align: left; padding:5px;;}
-.fieldLabelInvalid { float:fluid; text-align: left; padding:5px; color: #ba4c32}
 
 .button { background:#eee url(../images/button.gif) repeat-x 0 0; border:solid 1px #b1a874; color:#7f7f7f; font-size:11px; padding:2px 6px 2px 6px; cursor:pointer; line-height:14px !important; }
 .button:hover { color:#333; border-color:#857b42; }
