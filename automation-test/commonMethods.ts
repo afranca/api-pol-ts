@@ -1,6 +1,6 @@
 import request from "supertest";
 const expect = require("chai").expect;
-import { setUrl } from "./testData/set-url";
+import { setUrl } from "./testData/setUrl";
 const url = setUrl();
 
 class Common {

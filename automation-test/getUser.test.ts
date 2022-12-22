@@ -1,6 +1,6 @@
 import UserData from "./testData/userData";
 const expect = require("chai").expect;
-import { setUrl } from "../test/testData/set-url";
+import { setUrl } from "./testData/setUrl";
 import Common from "./commonMethods";
 const url = setUrl();
 
