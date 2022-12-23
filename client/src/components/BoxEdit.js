@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Modal from "./UI/Modal";
 import classes from "./BoxEdit.module.css";
 
@@ -10,32 +10,64 @@ export default function BoxEdit(props) {
   const roleRef = useRef(props.data.role);
   const occupationRef = useRef(props.data.occupation);
 
+  const [nameValid, setNameValid] = useState(true);
+  const [ageValid, setAgeValid] = useState(true);
+  const [roleValid, setRoleValid] = useState(true);
+  const [occupationValid, setOccupationValid] = useState(true);
+
   useEffect(() => {
     console.log("Use Effect");
     nameRef.current.value = props.data.name;
     ageRef.current.value = props.data.age;
     roleRef.current.value = props.data.role;
-    occupationRef.current.value = props.data.occupation;    
+    occupationRef.current.value = props.data.occupation;
   }, []);
 
-  const onSubmitHandler = (event) =>{
+  const onSubmitHandler = (event) => {
     event.preventDefault();
     const enteredName = nameRef.current.value;
-    const enteredAge = ageRef.current.value;
+    const enteredAge = +ageRef.current.value;
     const enteredRole = roleRef.current.value;
     const enteredOccupation = occupationRef.current.value;
-    
+
     const user = {
       id: props.data.id,
       name: enteredName,
       age: enteredAge,
       role: enteredRole,
-      occupation: enteredOccupation
+      occupation: enteredOccupation,
+    };
 
+    if (enteredName.trim().length < 1) {
+      setNameValid(false);
+    } else {
+      setNameValid(true);
     }
-    //console.log(user);
+
+    if (enteredAge < 1) {
+      setAgeValid(false);
+    } else {
+      setAgeValid(true);
+    }
+
+    if (
+      enteredRole.trim().length === 0 &&
+      enteredOccupation.trim().length === 0
+    ) {
+      setRoleValid(false);
+      setOccupationValid(false);
+    } else {
+      setRoleValid(true);
+      setOccupationValid(true);
+    }
+
+    if (!nameValid || !ageValid || !occupationValid || !roleValid) {
+      console.log("INVALID");
+      return;
+    }
+
     props.onUpdate(user);
-  }
+  };
 
   return (
     <Modal onClose={props.hideModal}>
@@ -44,7 +76,7 @@ export default function BoxEdit(props) {
           <h2>User</h2>
         </div>
         <form onSubmit={onSubmitHandler}>
-          <div className={classes.form}>
+          <div className={`${classes.form} ${!nameValid && classes.invalid}`}>
             <p>
               <label>
                 Name<span>(Required)</span>
@@ -56,6 +88,8 @@ export default function BoxEdit(props) {
                 ref={nameRef}
               />
             </p>
+          </div>
+          <div className={`${classes.form} ${!ageValid && classes.invalid}`}>
             <p>
               <label>
                 Age<span>(Required)</span>
@@ -67,6 +101,8 @@ export default function BoxEdit(props) {
                 ref={ageRef}
               />
             </p>
+          </div>
+          <div className={`${classes.form} ${!roleValid && classes.invalid}`}>
             <p>
               <label>
                 Role<span>(Optional)</span>
@@ -78,6 +114,8 @@ export default function BoxEdit(props) {
                 ref={roleRef}
               />
             </p>
+          </div>
+          <div className={`${classes.form} ${!occupationValid && classes.invalid}`}>
             <p>
               <label>
                 Occupation<span>(Optional)</span>
@@ -89,15 +127,21 @@ export default function BoxEdit(props) {
                 ref={occupationRef}
               />
             </p>
-
           </div>
-          <div className={classes.buttons}>            
-            <button onClick={props.hideModal} className={classes.button}>Close</button>
-            <button type="submit" onSubmit={props.hideModal} className={classes.button}>Submit</button>            
+          <div className={classes.buttons}>
+            <button onClick={props.hideModal} className={classes.button}>
+              Close
+            </button>
+            <button
+              type="submit"
+              onSubmit={props.hideModal}
+              className={classes.button}
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
-      
     </Modal>
   );
 }
