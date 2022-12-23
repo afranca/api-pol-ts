@@ -15,6 +15,13 @@
 .form .req { font-size:13px; float:right; white-space:nowrap; color:#999;  }
 .form p{ padding-bottom:15px; }
 
+.form.invalid input {
+    border-color: red;
+    background-color: #f2dfdb;
+}
+.form.invalid label {
+    border-color: red;    
+}
 
 .field { border:solid 1px #d3cfc7; background:#fff; padding:5px; }
 
