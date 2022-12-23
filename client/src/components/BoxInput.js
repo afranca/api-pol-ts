@@ -19,10 +19,9 @@ export default function BoxInput(props) {
     let age = +ageRef.current.value;
     let role = roleRef.current.value;
     let occupation = occupationRef.current.value;
-    
 
     if (name.trim().length < 1){      
-      setNameValid(false);      
+      setNameValid(false);
     } else {      
       setNameValid(true);
     }
