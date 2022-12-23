@@ -20,15 +20,20 @@ export default function BoxEdit(props) {
 
   const onSubmitHandler = (event) =>{
     event.preventDefault();
-    //console.log(event);
+    const enteredName = nameRef.current.value;
+    const enteredAge = ageRef.current.value;
+    const enteredRole = roleRef.current.value;
+    const enteredOccupation = occupationRef.current.value;
+    
     const user = {
       id: props.data.id,
-      name: nameRef.current.value,
-      age: ageRef.current.value,
-      role: roleRef.current.value,
-      occupation: occupationRef.current.value
+      name: enteredName,
+      age: enteredAge,
+      role: enteredRole,
+      occupation: enteredOccupation
 
     }
+    //console.log(user);
     props.onUpdate(user);
   }
 
