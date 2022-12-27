@@ -30,7 +30,7 @@ class Common {
 			.delete("/api/users/" + id)
 			.set("Accept", "application/json")
 			.set("Content-Type", "application/json");
-		expect(response.statusCode).to.be.equal(201);
+		expect(response.statusCode).to.be.equal(200);
 		expect(response.body.message).to.be.equal("Successfully deleted.");
 		return response;
 	}

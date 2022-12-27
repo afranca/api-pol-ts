@@ -8,7 +8,7 @@
 		"getUser": "mocha -r ts-node/register automation-test/getUser.test.ts",
 		"deleteUser": "mocha -r ts-node/register automation-test/deleteUser.test.ts",
 		"test": "npm run createUser && npm run getUser && npm run deleteUser",
-		"start": "nodemon dist/app.js"
+		"start": "nodemon dist/src/app.js"
 	},
 	"repository": {
 		"type": "git",
