@@ -3,6 +3,7 @@ import { RequestBody } from "../models/request-body";
 import { User } from "../models/users";
 import { UserType } from "../models/users";
 import { defineUserType } from "../utils/type-util";
+import { idGenerator } from "../utils/id-generator";
 
 /* ************************************ */
 /* * Repository                         */
@@ -23,7 +24,7 @@ export const createUser: RequestHandler = (req, res, next ) => {
 
 
    const newUser =  new User(
-                        Math.random().toString(),
+                        idGenerator().toString(),
                         type,
                         name,
                         age,
